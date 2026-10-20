@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Disease Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            margin: 50px auto;
+            width: 400px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px gray;
+        }
+
+        h2 {
+            color: #ff4b5c;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #ff4b5c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff1e38;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .high {
+            color: red;
+        }
+
+        .low {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>❤️ Heart Disease Prediction</h2>
+
+    <form action="/predict" method="post">
+        <input type="number" name="age" placeholder="Age" required>
+        <input type="number" name="sex" placeholder="Sex (1=Male, 0=Female)" required>
+        <input type="number" name="cp" placeholder="Chest Pain (0-3)" required>
+        <input type="number" name="trestbps" placeholder="Blood Pressure" required>
+        <input type="number" name="chol" placeholder="Cholesterol" required>
+        <input type="number" name="thalach" placeholder="Max Heart Rate" required>
+        <input type="number" name="exang" placeholder="Exercise Angina (1/0)" required>
+        <input type="text" name="oldpeak" placeholder="Oldpeak" required>
+        <input type="number" name="slope" placeholder="Slope (0-2)" required>
+        <input type="number" name="ca" placeholder="Vessels (0-3)" required>
+        <input type="number" name="thal" placeholder="Thal (0-2)" required>
+
+        <button type="submit">🔍 Predict</button>
+    </form>
+
+    {% if result %}
+        <div class="result {% if 'High' in result %}high{% else %}low{% endif %}">
+            {{ result }}
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
+
